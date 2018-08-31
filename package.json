@@ -1,0 +1,21 @@
+{
+  "name": "developer-challenge",
+  "version": "1.0.0",
+  "description": "Turner Test",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js"
+  },
+  "author": "Fullstackjake",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "*",
+    "body-parser": "*",
+    "express": "*",
+    "mongoose": "*"
+  },
+  "devDependencies": {
+    "nodemon": "*"
+  }
+}
