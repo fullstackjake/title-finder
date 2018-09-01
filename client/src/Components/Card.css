@@ -6,3 +6,26 @@
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
+.activeCard {
+  -webkit-box-shadow: 0px 4px 18px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 4px 18px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 4px 18px 0px rgba(0, 0, 0, 0.75);
+}
+
+.inActiveCard {
+}
+
+.genres {
+  font-style: italic;
+  font-size: 0.8em;
+}
+
+.detailsTitle {
+  display: block;
+  font-weight: bold;
+}
+
+.detailsDesc {
+  display: block;
+}

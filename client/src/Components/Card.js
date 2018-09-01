@@ -10,9 +10,10 @@ import './Card.css'
 class Card extends Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = { details: false, activeCard: 'inActvieCard' }
     this.gatherRoles = this.gatherRoles.bind()
     this.cutLongDesc = this.cutLongDesc.bind()
+    this.moreDetail = this.moreDetail.bind()
   }
 
   gatherRoles = (roles, roleType) => {
@@ -35,9 +36,18 @@ class Card extends Component {
     }
   }
 
+  moreDetail = e => {
+    e.preventDefault()
+    if (this.state.details === false) {
+      this.setState({ details: true, activeCard: 'activeCard' })
+    } else {
+      this.setState({ details: false, activeCard: 'inActiveCard' })
+    }
+  }
+
   render() {
     return (
-      <div className="col-md-4">
+      <div className="col-md-4 ">
         {/* <h1>
           {this.props.title.TitleName} ({this.props.title.ReleaseYear})
         </h1>
@@ -64,18 +74,58 @@ class Card extends Component {
           </li>
         </ul> */}
 
-        <div className="card">
+        <div className={'card ' + this.state.activeCard}>
           {/* <img class="card-img-top" src="..." alt="Card image cap"> */}
           <div className="card-body">
             <h6 className="card-title titleName">
               {this.props.title.TitleName} ({this.props.title.ReleaseYear})
             </h6>
-            <p className="card-text">
-              {this.cutLongDesc(this.props.title.Storylines[1].Description)}
+            <p className="genres">
+              {this.props.title.Genres.join(', ').trim()}
             </p>
-            <a href="#" className="btn btn-primary">
-              More Details
-            </a>
+            <p className="card-text">
+              {this.state.details
+                ? `${this.props.title.Storylines[1].Description}`
+                : `${this.cutLongDesc(
+                    this.props.title.Storylines[1].Description
+                  )}`}
+            </p>
+            <div className="card-body">
+              <a
+                onClick={e => this.moreDetail(e)}
+                href=""
+                className="btn btn-primary">
+                More Details
+              </a>
+            </div>
+            {this.state.details ? (
+              <ul className="list-group list-group-flush">
+                <li className="list-group-item">
+                  <span className="detailsTitle">Director:</span>
+                  <span className="detailsDesc">
+                    {this.gatherRoles(
+                      this.props.title.Participants,
+                      'Director'
+                    )}
+                  </span>
+                </li>
+                <li className="list-group-item">
+                  <span className="detailsTitle">Writers:</span>
+                  <span className="detailsDesc">
+                    {this.gatherRoles(
+                      this.props.title.Participants,
+                      'Screenplay'
+                    )}
+                  </span>
+                </li>
+                <li className="list-group-item">
+                  <span className="detailsTitle">Starring:</span>
+                  <span className="detailsDesc">
+                    {this.gatherRoles(this.props.title.Participants, 'Actor')}
+                  </span>
+                </li>
+              </ul>
+            ) : null}{' '}
           </div>
         </div>
       </div>
