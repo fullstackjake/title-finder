@@ -7,9 +7,12 @@ const films = require('./routes/api/films')
 const app = express()
 
 // Body parser middleware
-app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-
+app.use(
+  bodyParser.urlencoded({
+    extended: true
+  })
+)
 // DB Config
 const db = require('./config/keys').mongoURI
 
