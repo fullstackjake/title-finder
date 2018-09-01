@@ -48,32 +48,6 @@ class Card extends Component {
   render() {
     return (
       <div className="col-md-4 ">
-        {/* <h1>
-          {this.props.title.TitleName} ({this.props.title.ReleaseYear})
-        </h1>
-        <span>
-          <strong>Genres: </strong>
-          {this.props.title.Genres.join(', ').trim()}
-        </span>
-        <p>{this.props.title.Storylines[1].Description}</p>
-        <ul>
-          <li>
-            <span className="director">
-              Directors:{' '}
-              {this.gatherRoles(this.props.title.Participants, 'Director')}
-            </span>
-          </li>
-          <li>
-            <span className="actor">
-              Directors:{' '}
-              {this.gatherRoles(this.props.title.Participants, 'Actor')}
-            </span>
-          </li>
-          <li>
-            <span />
-          </li>
-        </ul> */}
-
         <div className={'card ' + this.state.activeCard}>
           {/* <img class="card-img-top" src="..." alt="Card image cap"> */}
           <div className="card-body">

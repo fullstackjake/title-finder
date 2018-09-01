@@ -15,6 +15,18 @@ router.get('/all', (req, res) => {
   })
 })
 
+router.get('/titles', (req, res) => {
+  console.log(req.query)
+  Titles.find({ TitleName: { $regex: req.query.title } }, function(err, title) {
+    if (err) {
+      res.send('Something went wrong in titles')
+    }
+
+    console.log(title)
+    res.json(title)
+  })
+})
+
 router.post('/titles', (req, res) => {
   Titles.find({ TitleName: { $regex: req.body.title } }, function(err, title) {
     if (err) {
