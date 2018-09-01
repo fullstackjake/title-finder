@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './Card.css'
 
 // const Card = props => (
 //   <div>
@@ -11,6 +12,7 @@ class Card extends Component {
     super(props)
     this.state = {}
     this.gatherRoles = this.gatherRoles.bind()
+    this.cutLongDesc = this.cutLongDesc.bind()
   }
 
   gatherRoles = (roles, roleType) => {
@@ -25,10 +27,18 @@ class Card extends Component {
     return participants.join(', ').trim()
   }
 
+  cutLongDesc = desc => {
+    if (desc.length > 100) {
+      return desc.substring(0, 96) + '...'
+    } else {
+      return desc
+    }
+  }
+
   render() {
     return (
-      <div>
-        <h1>
+      <div className="col-md-4">
+        {/* <h1>
           {this.props.title.TitleName} ({this.props.title.ReleaseYear})
         </h1>
         <span>
@@ -52,7 +62,22 @@ class Card extends Component {
           <li>
             <span />
           </li>
-        </ul>
+        </ul> */}
+
+        <div className="card">
+          {/* <img class="card-img-top" src="..." alt="Card image cap"> */}
+          <div className="card-body">
+            <h6 className="card-title titleName">
+              {this.props.title.TitleName} ({this.props.title.ReleaseYear})
+            </h6>
+            <p className="card-text">
+              {this.cutLongDesc(this.props.title.Storylines[1].Description)}
+            </p>
+            <a href="#" className="btn btn-primary">
+              More Details
+            </a>
+          </div>
+        </div>
       </div>
     )
   }

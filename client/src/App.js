@@ -34,9 +34,13 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Getting Titles</h1>
         </header>
-        {this.state.titles.map((title, index) => (
-          <Card key={index} title={title} />
-        ))}
+        <div className="container">
+          <div className="row">
+            {this.state.titles.map((title, index) => (
+              <Card key={index} title={title} />
+            ))}
+          </div>
+        </div>
       </div>
     )
   }
