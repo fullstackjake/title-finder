@@ -1,17 +1,19 @@
 import React, { Component } from 'react'
 import logo from './logo.svg'
 import './App.css'
+import Card from './Components/Card'
 
 class App extends Component {
   state = {
-    response: ''
+    titles: []
   }
 
   componentDidMount() {
     this.callApi()
       .then(res => {
-        this.setState({ response: res[0].TitleName })
-        console.log(res)
+        this.setState({ titles: res })
+        // console.log(res)
+        console.log(this.state)
       })
       .catch(err => console.log(err))
   }
@@ -32,7 +34,9 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Getting Titles</h1>
         </header>
-        <p className="App-intro">{this.state.response}</p>
+        {this.state.titles.map((title, index) => (
+          <Card key={index} title={title} />
+        ))}
       </div>
     )
   }
