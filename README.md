@@ -1,4 +1,4 @@
-# health-checker
+# Title Checker
 For review
 
 To start and test application, please use node in terminal/cmd. Node Js must be installed to run this application
